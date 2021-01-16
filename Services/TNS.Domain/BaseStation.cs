@@ -11,7 +11,5 @@ namespace TNS.Domain
         public int Id { get; set; }
         public int Capacity { get; set; }
         public int BaseStationStatusId { get; set; }
-
-        public int BaseStationStatus { get; set; }
     }
 }
