@@ -51,12 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ControllerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TNS.Database\TNS.Database.csproj">
+      <Project>{2b13796a-c613-4754-837d-ad65897e65be}</Project>
+      <Name>TNS.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TNS.Domain\TNS.Domain.csproj">
+      <Project>{726eece1-3371-448f-aeb6-43f0c3dfb0fb}</Project>
+      <Name>TNS.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
