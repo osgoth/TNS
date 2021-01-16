@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace TNS.Domain
 {
-    public class Constants
+    public class SubscriptionType
     {
         public int Id { get; set; }
-        public int UserCallChance { get; set; }
-        public int UserTravelChance { get; set; }
+        public int SecondsTotal { get; set; }
+
+        public string Name { get; set; }
     }
 }
