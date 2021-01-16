@@ -14,6 +14,7 @@ namespace TNS.Domain
         public int UserStatusId { get; set; }
         public DateTime MinutesLeft { get; set; }
         public string FullName { get; set; }
+        public string Number { get; set; }
 
 
         public BaseStation BaseStation { get; set; }
