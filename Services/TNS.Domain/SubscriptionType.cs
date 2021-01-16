@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace TNS.Domain
 {
-    public class Class1
+    public class SubscriptionType
     {
+        public int Id { get; set; }
+        public DateTime MinutesTotal { get; set; }
     }
 }
