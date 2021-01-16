@@ -11,9 +11,9 @@ namespace TNS.Domain
         public int Id { get; set; }
         public int BaseStationId { get; set; }
         public int SubscriptionTypeId { get; set; }
+        public int UserStatusId { get; set; }
         public DateTime MinutesLeft { get; set; }
         public string FullName { get; set; }
-        public int UserStatusId { get; set; }
 
 
         public BaseStation BaseStation { get; set; }
