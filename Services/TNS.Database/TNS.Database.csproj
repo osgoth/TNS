@@ -51,6 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\202101162017598_AddInitialScheme.cs" />
+    <Compile Include="Migrations\202101162017598_AddInitialScheme.designer.cs">
+      <DependentUpon>202101162017598_AddInitialScheme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TelecommunicationNetworkSimulatorContext.cs" />
@@ -64,6 +68,11 @@
       <Project>{726eece1-3371-448f-aeb6-43f0c3dfb0fb}</Project>
       <Name>TNS.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202101162017598_AddInitialScheme.resx">
+      <DependentUpon>202101162017598_AddInitialScheme.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
