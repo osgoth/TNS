@@ -8,5 +8,6 @@ namespace TNS.Logic
 {
     public class Class1
     {
+
     }
 }
