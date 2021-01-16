@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +14,11 @@ namespace TNS.Domain
         public int BaseStationId { get; set; }
         public int SubscriptionTypeId { get; set; }
         public int UserStatusId { get; set; }
-        public DateTime MinutesLeft { get; set; }
+        public int SecondsLeft { get; set; }
         public string FullName { get; set; }
+
+        [Index(IsUnique = true)]
+        [StringLength(200)]
         public string Number { get; set; }
 
 

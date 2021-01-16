@@ -55,6 +55,14 @@
     <Compile Include="Migrations\202101162017598_AddInitialScheme.designer.cs">
       <DependentUpon>202101162017598_AddInitialScheme.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101162227340_ChangesInTimeUnitsDataTypes.cs" />
+    <Compile Include="Migrations\202101162227340_ChangesInTimeUnitsDataTypes.designer.cs">
+      <DependentUpon>202101162227340_ChangesInTimeUnitsDataTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101162258330_AddCallDelayToConstantsTable.cs" />
+    <Compile Include="Migrations\202101162258330_AddCallDelayToConstantsTable.designer.cs">
+      <DependentUpon>202101162258330_AddCallDelayToConstantsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TelecommunicationNetworkSimulatorContext.cs" />
@@ -72,6 +80,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202101162017598_AddInitialScheme.resx">
       <DependentUpon>202101162017598_AddInitialScheme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101162227340_ChangesInTimeUnitsDataTypes.resx">
+      <DependentUpon>202101162227340_ChangesInTimeUnitsDataTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101162258330_AddCallDelayToConstantsTable.resx">
+      <DependentUpon>202101162258330_AddCallDelayToConstantsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
