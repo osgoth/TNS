@@ -14,28 +14,29 @@ namespace TNS.Engine
     {
         static void Main(string[] args)
         {
+
             ControllerService controllerService = new ControllerService();
 
-            using (var dbContext = new TelecommunicationNetworkSimulatorContext())
-            {
-                List<Thread> threads = new List<Thread>();
-                foreach (var user in dbContext.Users)
-                {
-                    threads.Add(
-                        new Thread(
-                            new ThreadStart(
-                                () => user.StartChanceCalculation(controllerService)
-                                )
-                            )
-                        );
-                }
+            var dbusers = new TelecommunicationNetworkSimulatorContext().Users.ToList();
 
-                foreach (var thr in threads)
-                {
-                    thr.Start();
-                }
+            List<Thread> threads = new List<Thread>();
+            foreach (var user in dbusers)
+            {
+                threads.Add(
+                    new Thread(
+                        new ThreadStart(
+                            () => user.StartChanceCalculation(dbusers, controllerService)
+                            )
+                        )
+                    );
             }
 
+            foreach (var thr in threads)
+            {
+                thr.Start();
+            }
+
+            Console.WriteLine("DONE!");
         }
     }
 }
