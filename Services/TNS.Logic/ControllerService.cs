@@ -5,39 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using TNS.Domain;
 using TNS.Database;
+using TNS.Database.Repositories;
 
 namespace TNS.Logic
 {
     public class ControllerService
     {
-        // base station statuses:
-        // 0 - stopped
-        // 1 - running
-
         // base station id to current capacity relation
         public Dictionary<int, int> baseStationCapacity = new Dictionary<int, int>();
 
         public ControllerService()
         {
-            using (var dbContext = new TelecommunicationNetworkSimulatorContext())
-            {
-                for (int i = 0; i < dbContext.BaseStations.Count(); i++)
-                {
-                    baseStationCapacity.Add(i, 0);
-                }
-            }
-        }
-        public void RestartBaseStation(BaseStation baseStation)
-        {
-            using (var dbContext = new TelecommunicationNetworkSimulatorContext())
-            {
-                baseStation.BaseStationStatusId = 0;
-                foreach (var user in dbContext.Users.Where(i => i.BaseStationId == baseStation.Id))
-                {
-                    user.UserStatusId = 0;
+            var bsRepo = new BaseStationRepository();
+            var baseStations = new TelecommunicationNetworkSimulatorContext().BaseStations.ToList();
 
-                }
+            foreach (var bs in baseStations)
+            {
+                baseStationCapacity.Add(bs.Id, 0);
             }
         }
+
     }
 }
