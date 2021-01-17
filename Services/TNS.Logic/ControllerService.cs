@@ -19,25 +19,13 @@ namespace TNS.Logic
 
         public ControllerService()
         {
-            using (var dbContext = new TelecommunicationNetworkSimulatorContext())
-            {
-                for (int i = 0; i < dbContext.BaseStations.Count(); i++)
-                {
-                    baseStationCapacity.Add(i, 0);
-                }
-            }
-        }
-        public void RestartBaseStation(BaseStation baseStation)
-        {
-            using (var dbContext = new TelecommunicationNetworkSimulatorContext())
-            {
-                baseStation.BaseStationStatusId = 0;
-                foreach (var user in dbContext.Users.Where(i => i.BaseStationId == baseStation.Id))
-                {
-                    user.UserStatusId = 0;
+            var baseStations = new TelecommunicationNetworkSimulatorContext().BaseStations.ToList();
 
-                }
+            foreach (var bs in baseStations)
+            {
+                baseStationCapacity.Add(bs.Id, 0);
             }
         }
+
     }
 }

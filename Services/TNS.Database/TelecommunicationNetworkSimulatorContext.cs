@@ -58,11 +58,11 @@ namespace TNS.Database
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
             // turn off pluralization
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
         }
+
 
     }
 }
