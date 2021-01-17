@@ -55,6 +55,7 @@
     <Compile Include="BaseStation\BaseStationLoad.cs" />
     <Compile Include="BaseStation\IBaseStationRepository.cs" />
     <Compile Include="Constants\Constants.cs" />
+    <Compile Include="Constants\IConstantsRepository.cs" />
     <Compile Include="User\SubscriptionType.cs" />
     <Compile Include="User\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
