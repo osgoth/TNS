@@ -67,6 +67,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseStationRepository.cs" />
+    <Compile Include="Repositories\ConstantsRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="TelecommunicationNetworkSimulatorContext.cs" />
   </ItemGroup>
