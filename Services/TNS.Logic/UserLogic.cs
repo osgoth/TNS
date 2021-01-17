@@ -5,21 +5,19 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TNS.Domain;
+using TNS.Domain.Utils.Enums;
 using TNS.Database;
 
 namespace TNS.Logic
 {
     public static class UserLogic
     {
-        // user statuses:
-        // 1 - free
-        // 2 - talking
-        // 3 - in queue # not realised yet
 
         public static void StartChanceCalculation(this User user, List<User> users, ControllerService controllerService)
         {
-            int callChance;    // in percents
-            int callDelay; // in seconds
+
+            int callChance;   // in percents
+            int callDelay;    // in seconds
             using (var dbContext = new TelecommunicationNetworkSimulatorContext())
             {
                 callChance = dbContext.Constants.FirstOrDefault().UserCallChance;
@@ -39,7 +37,7 @@ namespace TNS.Logic
                 else
                 {
                     User otherUser = users.ToList()[rnd.Next(users.Count())];
-                    while (otherUser == user && otherUser.UserStatusId != 1)
+                    while (otherUser == user)
                     {
                         otherUser = users.ToList()[rnd.Next(users.Count())];
                     }
@@ -51,11 +49,14 @@ namespace TNS.Logic
 
         public static void Call(this User user, User otherUser, ControllerService controllerService)
         {
+            int callDurationMin = 1;    // in seconds
+            int callDurationMax = 30;   // in seconds
+
             var rnd = new Random();
 
             Semaphore smp = new Semaphore(1, 1);
 
-            if (otherUser.UserStatusId != 1)
+            if (otherUser.UserStatusId != (int)UserStatus.Free)
             {
                 return;
             }
@@ -64,26 +65,23 @@ namespace TNS.Logic
             Monitor.Enter(otherUser);
             controllerService.baseStationCapacity[user.BaseStationId]++;
             controllerService.baseStationCapacity[otherUser.BaseStationId]++;
-            user.UserStatusId = 2;
-            otherUser.UserStatusId = 2;
+            user.UserStatusId = (int)UserStatus.IsTalking;
+            otherUser.UserStatusId = (int)UserStatus.IsTalking;
             Monitor.Exit(otherUser);
             smp.Release();
 
             Console.WriteLine($"++ {user.Number} -> {otherUser.Number}");
-            Thread.Sleep(rnd.Next(1000, 30000));
+            Thread.Sleep(rnd.Next(callDurationMin * 1000, callDurationMax * 1000));
             Console.WriteLine($"-- {user.Number} -> {otherUser.Number}");
-
 
             smp.WaitOne();
             Monitor.Enter(otherUser);
             controllerService.baseStationCapacity[user.BaseStationId]--;
             controllerService.baseStationCapacity[otherUser.BaseStationId]--;
-            user.UserStatusId = 1;
-            otherUser.UserStatusId = 1;
+            user.UserStatusId = (int)UserStatus.Free;
+            otherUser.UserStatusId = (int)UserStatus.Free;
             Monitor.Exit(otherUser);
             smp.Release();
-
-
         }
     }
 }

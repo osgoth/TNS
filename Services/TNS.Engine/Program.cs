@@ -14,7 +14,6 @@ namespace TNS.Engine
     {
         static void Main(string[] args)
         {
-
             ControllerService controllerService = new ControllerService();
 
             var dbusers = new TelecommunicationNetworkSimulatorContext().Users.ToList();
