@@ -10,10 +10,6 @@ namespace TNS.Logic
 {
     public class ControllerService
     {
-        // base station statuses:
-        // 0 - stopped
-        // 1 - running
-
         // base station id to current capacity relation
         public Dictionary<int, int> baseStationCapacity = new Dictionary<int, int>();
 
