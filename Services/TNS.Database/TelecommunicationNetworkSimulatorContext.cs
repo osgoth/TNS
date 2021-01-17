@@ -11,8 +11,10 @@ namespace TNS.Database
 {
     public class TelecommunicationNetworkSimulatorContext : DbContext
     {
-        public TelecommunicationNetworkSimulatorContext() : base("DefaultConnection")
+        
+        public TelecommunicationNetworkSimulatorContext() : base(@"Data Source=.\SQLEXPRESS;Initial Catalog=TNS;Integrated Security=True;MultipleActiveResultSets=true")
         { }
+        
         public DbSet<BaseStation> BaseStations { get; set; }
         public DbSet<BaseStationLoad> BaseStationLoads { get; set; }
         public DbSet<SubscriptionType> SubscriptionTypes { get; set; }
@@ -22,11 +24,11 @@ namespace TNS.Database
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
             // turn off pluralization
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
         }
+
 
     }
 }
